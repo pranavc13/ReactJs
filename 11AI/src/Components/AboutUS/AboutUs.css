@@ -1,0 +1,130 @@
+/* AboutMeCard.css */
+.about-me-card {
+    animation: rotateAndShow 0.8s ease-in-out forwards;
+    transform-origin: center;
+    opacity: 0;
+}
+
+@keyframes rotateAndShow {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateY(360deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes sparkMove {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(100px, -50px) scale(1.5);
+      opacity: 1;
+    }
+}
+
+.infinity-path {
+    fill: transparent;
+    stroke: #1595b6;
+    stroke-width: 6;
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: dash 2s ease-in-out forwards infinite;
+    filter: drop-shadow(2px 2px 4px rgba(21, 149, 182, 0.75));
+}
+
+.infinity-container {
+    display: inline-block;
+    position: relative;
+}
+
+.gradient-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(45deg, #1595b6, #1f2667e6, #4595eb);
+    filter: blur(20px);
+    opacity: 0.5;
+    transform-origin: center;
+    animation: gradientMove 4s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.blue-spark {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #4595eb;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: 0;
+    animation: sparkMove 4s ease-in-out infinite;
+}
+
+/* Add responsive styles here if needed */
+@media (max-width: 768px) {
+    .design-section {
+        margin-left: 10px !important;
+    }
+
+    .about-me-card {
+        width: 90% !important;
+        padding: 20px !important;
+    }
+
+    .tech-stack {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .image-container {
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .design-section {
+        margin-top: 20px !important;
+        margin-left: 10px !important;
+    }
+
+    .about-me-card {
+        flex-direction: column;
+    }
+
+    .tech-stack {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
